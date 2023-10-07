@@ -1,0 +1,63 @@
+<section class="register">
+    <div class="container card my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="register-image">
+                    <img class="w-100" src="./assets/images/Sign up-rafiki.svg" alt="" srcset="">
+                </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="register-form  w-100">
+                    <form [formGroup]="signUpFrom" (ngSubmit)="handleSignUp(signUpFrom)">
+                        <!-- <h2>{{signUpFrom.get('phone')?.getError('pattern')|json}}</h2> -->
+                        <div id="alert" *ngIf="apiError">
+                            <p>{{apiError}}</p>
+
+                        </div>
+
+                        <label for="name">Name:</label>
+                        <input formControlName="name" class="form-control mb-2" id="name" type="text">
+                        <div id="alert" *ngIf="signUpFrom.get('name')?.errors && signUpFrom.get('name')?.touched">
+                            <p *ngIf="signUpFrom.get('name')?.getError('required')">name is required</p>
+                            <p *ngIf="signUpFrom.get('name')?.getError('minlength')">name must at least 3 char</p>
+                            <p *ngIf="signUpFrom.get('name')?.getError('maxlength')">name max is 10</p>
+                        </div>
+
+                        <label for="email">Email:</label>
+                        <input formControlName="email" class="form-control mb-2" id="email" type="text">
+                        <div id="alert" *ngIf="signUpFrom.get('email')?.errors && signUpFrom.get('email')?.touched">
+                            <p *ngIf="signUpFrom.get('email')?.getError('required')">email is required</p>
+                            <p *ngIf="signUpFrom.get('email')?.getError('email')">email not valid</p>
+                        </div>
+
+                        <label for="password">Password:</label>
+                        <input formControlName="password" class="form-control mb-2" id="password" type="password">
+                        <div id="alert" *ngIf="signUpFrom.get('password')?.errors && signUpFrom.get('password')?.touched">
+                            <p *ngIf="signUpFrom.get('password')?.getError('required')">password is required</p>
+                            <p *ngIf="signUpFrom.get('password')?.getError('pattern')">password not valid</p>
+                        </div>
+
+                        <label for="age">Age:</label>
+                        <input formControlName="age" class="form-control mb-2" id="age" type="number">
+                        <div id="alert" *ngIf="signUpFrom.get('age')?.errors && signUpFrom.get('age')?.touched">
+                            <p *ngIf="signUpFrom.get('age')?.getError('required')">age is required</p>
+                        </div>
+
+                        <label for="phone">Phone:</label>
+                        <input formControlName="phone" class="form-control mb-2" id="phone" type="tel">
+                        <div id="alert" *ngIf="signUpFrom.get('phone')?.errors && signUpFrom.get('phone')?.touched">
+                            <p *ngIf="signUpFrom.get('phone')?.getError('required')">phone is required</p>
+                            <p *ngIf="signUpFrom.get('phone')?.getError('pattern')">phone not valid</p>
+                        </div>
+
+                        <button [disabled]="!signUpFrom.valid" type="submit" class="btn submit-button my-2 w-100 d-block m-auto">
+                            <i *ngIf="flag" class="fas fa-spinner fa-spin"></i>
+                            <span *ngIf="!flag">Sign Up!</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

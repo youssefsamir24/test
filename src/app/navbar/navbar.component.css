@@ -1,0 +1,16 @@
+.logo{
+    width: 30px;
+    height: 30px;
+}
+.navbar{
+    background-color: #F1F6F9 ;
+}
+#dropdownId{
+    cursor: pointer;
+}
+.logOut{
+    cursor: pointer;
+}
+.logOut:hover{
+    color: black !important;
+}
